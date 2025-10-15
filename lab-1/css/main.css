@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  height: 100%;
+}
+body {
+  margin: 0;
+  height: 100%;
+  padding: 0;
+  background: #fccce4;
+  background: linear-gradient(
+    0deg,
+    rgba(252, 204, 228, 1) 0%,
+    rgba(240, 134, 185, 1) 49%,
+    rgba(230, 90, 157, 1) 100%
+  );
+  background-attachment: fixed;
+}
+
+h1 {
+  font-size: 50px;
+  color: #f9eff4;
+}
+
+nav a {
+  color: #98225b;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+nav a:hover {
+  color: #f74b9e;
+}
+
+nav {
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(6px);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+main {
+  max-width: 500px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  background-color: #f2e0e9;
+  border-radius: 10px;
+}
+
+/* FORMULARZE*/
+
+form {
+  background: #fff;
+  max-width: 500px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: background 0.4s, color 0.4s, box-shadow 0.4s;
+}
+label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: block;
+}
+input[type='text'],
+input[type='email'],
+input[type='number'],
+input[type='date'],
+select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #343434;
+  border-radius: 2px;
+  background: #fff;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+input[type='color'] {
+  height: 50px;
+  width: 100%;
+  border: 1px solid #343434;
+  border-radius: 2px;
+  background: #fff;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #3e3e3e;
+  box-shadow: 0 0 5px rgba(247, 75, 158, 0.4);
+}
+
+.btn {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+.btn:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}

@@ -1,0 +1,140 @@
+/* NAGŁÓWEK + KSIĘŻYC */
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111;
+  line-height: 1.2;
+}
+.moon {
+  background: transparent;
+  border: none;
+  display: inline-block;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 5%;
+  transition: background 0.3s, transform 0.2s;
+}
+
+/*FORMULARZ*/
+form {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: background 0.4s, color 0.4s, box-shadow 0.4s;
+}
+label {
+  font-weight: 400;
+  margin-bottom: 0.1px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+input[type='text'],
+input[type='email'],
+input[type='number'],
+input[type='date'],
+select {
+  width: auto;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #343434;
+  border-radius: 2px;
+  background: #fff;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+input[type='color'] {
+  height: 50px;
+  width: auto;
+  border: 1px solid #343434;
+  border-radius: 2px;
+  background: #fff;
+  cursor: pointer;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #3e3e3e;
+  box-shadow: 0 0 5px rgba(247, 75, 158, 0.4);
+}
+
+fieldset {
+  flex-direction: column;
+  display: flex;
+  cursor: pointer;
+  border: 1px solid #343434;
+  border-radius: 2px;
+  padding: 10px 12px;
+}
+legend {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.btn {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+.btn:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+/* -------------------- TRYB CIEMNY -------------------- */
+.theme-toggle:checked ~ main form {
+  background: rgba(18, 18, 18, 0.94);
+  color: #dddddd;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+.theme-toggle:checked ~ main form input,
+.theme-toggle:checked ~ main form select {
+  background: #2a2a2a;
+  color: #eee;
+  border: 1px solid #333;
+}
+.theme-toggle:checked ~ main form fieldset {
+  border-color: #333;
+}
+
+.theme-toggle:checked ~ main .moon {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.theme-toggle:checked ~ main form .btn {
+  background-color: #3a8b3a;
+}
+.theme-toggle:checked ~ main form .btn:hover {
+  background-color: #2f7a2f;
+}
+
+.theme-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
