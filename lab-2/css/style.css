@@ -7,13 +7,37 @@ html {
 body {
   margin: 1rem;
   padding: 0;
+  background: #d879da;
+  background: linear-gradient(
+    0deg,
+    rgb(236, 223, 237) 0%,
+    rgb(209, 187, 211) 49%,
+    rgb(154, 123, 156) 100%
+  );
+  background-attachment: fixed;
+}
+
+h1 {
+  color: #eddbee;
+  text-align: center;
+}
+
+nav {
+  background-color: #eddbee;
+  padding: 0.75rem 1.5rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 a {
-  color: #0066cc; /* niebieski kolor linków */
-  text-decoration: none; /* bez podkreślenia */
+  color: #603261;
+  text-decoration: none;
   font-size: 1.4rem;
+  font-weight: 500;
 }
 a:hover {
-  text-decoration: underline; /* podkreślenie przy najechaniu */
+  color: #3d083d;
 }
