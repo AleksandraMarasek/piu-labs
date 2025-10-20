@@ -51,10 +51,23 @@ header h1 {
 }
 
 .logo {
-  background-color: #ffcc00;
+  content: ' Logo';
+  background-color: #ffffff;
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 1rem;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.logo::before {
+  content: 'Logo';
+  color: #000;
+  margin-right: 0.35rem;
+  line-height: 1;
 }
 
 nav {
