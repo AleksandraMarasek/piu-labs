@@ -1,6 +1,6 @@
 :root {
-  --color-border-alt: #999;
-  --color-bg-alt: #f0f0f0;
+  --color-border-alt: #cf9646;
+  --color-bg-alt: #ffffff;
   --color-white: #ffffff;
 
   --color-blue-alt: #1673d1;
@@ -265,17 +265,17 @@ header:has(input[name='version'][value='green']:checked)
   header:has(input[name='version'][value='green']:checked)
     ~ .container
     .item:nth-child(1) {
-    width: 31%;
+    width: 30%;
   }
   header:has(input[name='version'][value='green']:checked)
     ~ .container
     .item:nth-child(2) {
-    width: 26%;
+    width: 24%;
   }
   header:has(input[name='version'][value='green']:checked)
     ~ .container
     .item:nth-child(3) {
-    width: 21%;
+    width: 20%;
   }
   header:has(input[name='version'][value='green']:checked)
     ~ .container
@@ -285,7 +285,7 @@ header:has(input[name='version'][value='green']:checked)
   header:has(input[name='version'][value='green']:checked)
     ~ .container
     .item:nth-child(5) {
-    width: 6%;
+    width: 8%;
   }
 }
 
@@ -306,7 +306,7 @@ header:has(input[name='version'][value='green']:checked)
   header:has(input[name='version'][value='green']:checked)
     ~ .container
     .item:nth-child(1) {
-    width: 70%;
+    width: 65%;
     order: 5;
   }
   header:has(input[name='version'][value='green']:checked)
