@@ -90,6 +90,11 @@ body {
   max-width: min(100vw - 2 * var(--spacing), var(--wide-card-width));
   box-sizing: border-box;
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .product-card__image-container {
@@ -110,6 +115,9 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   transition: background-image 0.3s;
+}
+.product-card__image-container:hover .product-card__image {
+  transform: scale(1.03);
 }
 
 .product-card__details {
@@ -140,6 +148,10 @@ body {
   font-size: 0.8rem;
   font-weight: bold;
   transition: background-color 0.3s;
+}
+.product-card__promo:hover {
+  transform: scale(1.2);
+  background-color: var(--polo-button-hover-bg);
 }
 
 .product-card__description {
@@ -173,6 +185,9 @@ body {
   display: block;
   transition: border-color 0.3s, box-shadow 0.3s;
   position: relative;
+}
+.color-option:hover {
+  transform: scale(1.1);
 }
 
 .color-option--blue {
@@ -209,6 +224,9 @@ body {
   color: white;
   border-color: var(--polo-button-bg);
 }
+.size-option:hover {
+  transform: scale(1.05);
+}
 
 .product-card__price {
   font-size: 1.8rem;
@@ -236,6 +254,7 @@ body {
 
 .product-card__button:hover {
   background-color: var(--polo-button-hover-bg);
+  transform: scale(1.05);
 }
 
 .icon {
