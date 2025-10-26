@@ -1,19 +1,276 @@
-/* Minimalny reset  */
-html {
-  font-size: 16px; /* bazowy rozmiar czcionki */
-  font-family: system-ui, sans-serif; /* font systemowy */
-  line-height: 1.5; /* lepsza czytelność */
-}
-body {
-  margin: 1rem;
-  padding: 0;
+:root {
+  --color-blue: #1e64c8;
+  --color-red: #d7282f;
+  --color-green: #388e3c;
+  --color-yellow: #ffc107;
+
+  --max-image-width: 500px;
+  --details-width: 300px;
+
+  --spacing: 16px;
+
+  --wide-card-width: calc(
+    var(--max-image-width) + var(--details-width) + 3 * var(--spacing)
+  );
 }
 
-a {
-  color: #0066cc; /* niebieski kolor linków */
-  text-decoration: none; /* bez podkreślenia */
-  font-size: 1.4rem;
+.product-card__content {
+  --polo-image-url: url('../img/polo_g.png');
+  --polo-color: var(--color-green);
+  --polo-border-color: var(--color-green);
+  --polo-promo-bg: var(--color-green);
+  --polo-button-bg: var(--color-green);
+  --polo-button-hover-bg: #2e7d32;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing);
+  justify-content: center;
+  align-items: flex-start;
+
+  max-width: min(100%, var(--wide-card-width));
+  margin: 0 auto;
+  box-sizing: border-box;
 }
-a:hover {
-  text-decoration: underline; /* podkreślenie przy najechaniu */
+
+#color-select-blue:checked ~ .product-card__content {
+  --polo-image-url: url('../img/polo_b.png');
+  --polo-color: var(--color-blue);
+  --polo-border-color: var(--color-blue);
+  --polo-promo-bg: var(--color-blue);
+  --polo-button-bg: var(--color-blue);
+  --polo-button-hover-bg: #1a54a4;
+}
+
+#color-select-red:checked ~ .product-card__content {
+  --polo-image-url: url('../img/polo_r.png');
+  --polo-color: var(--color-red);
+  --polo-border-color: var(--color-red);
+  --polo-promo-bg: var(--color-red);
+  --polo-button-bg: var(--color-red);
+  --polo-button-hover-bg: #ad2026;
+}
+
+#color-select-yellow:checked ~ .product-card__content {
+  --polo-image-url: url('../img/polo_y.png');
+  --polo-color: var(--color-yellow);
+  --polo-border-color: var(--color-yellow);
+  --polo-promo-bg: var(--color-yellow);
+  --polo-button-bg: var(--color-yellow);
+  --polo-button-hover-bg: #d4a305;
+}
+
+#color-select-blue:checked ~ .product-card__content .color-option--blue,
+#color-select-red:checked ~ .product-card__content .color-option--red,
+#color-select-green:checked ~ .product-card__content .color-option--green,
+#color-select-yellow:checked ~ .product-card__content .color-option--yellow {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--polo-border-color);
+  border-color: var(--polo-border-color);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: var(--spacing);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.product-card {
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: var(--spacing);
+  width: 100%;
+  max-width: min(100vw - 2 * var(--spacing), var(--wide-card-width));
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.product-card__image-container {
+  max-width: var(--max-image-width);
+  width: min(100%, var(--max-image-width));
+  flex: 1 1 300px;
+  border: 1px solid var(--polo-border-color);
+  border-radius: 8px;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+.product-card__image {
+  width: 100%;
+  padding-top: 100%;
+  background-image: var(--polo-image-url);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.3s;
+}
+
+.product-card__details {
+  width: min(100%, var(--details-width));
+  flex: 1 1 250px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.product-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing);
+  margin-bottom: 8px;
+}
+
+.product-card__title {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.product-card__promo {
+  background-color: var(--polo-promo-bg);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.product-card__description {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0;
+  margin-bottom: var(--spacing);
+}
+
+.product-card__option-group {
+  margin-bottom: var(--spacing);
+}
+
+.product-card__option-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.product-card__color-options {
+  display: flex;
+  gap: 10px;
+}
+
+.color-option {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  display: block;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.color-option--blue {
+  background-color: var(--color-blue);
+}
+.color-option--red {
+  background-color: var(--color-red);
+}
+.color-option--green {
+  background-color: var(--color-green);
+}
+.color-option--yellow {
+  background-color: var(--color-yellow);
+}
+
+.product-card__size-options {
+  display: flex;
+  gap: 8px;
+}
+
+.size-option {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  position: relative;
+}
+
+.product-card__size-options input:checked + .size-option {
+  background-color: var(--polo-button-bg);
+  color: white;
+  border-color: var(--polo-button-bg);
+}
+
+.product-card__price {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: var(--spacing) 0;
+}
+
+.product-card__button {
+  background-color: var(--polo-button-bg);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card__button:hover {
+  background-color: var(--polo-button-hover-bg);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.color-option::after,
+.size-option::after,
+.product-card__button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-image: url('../img/effect1.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.1);
+  transition: width 0.3s ease-out, height 0.3s ease-out, opacity 0.3s ease-out,
+    transform 0.3s ease-out;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.color-option:active::after,
+.size-option:active::after,
+.product-card__button:active::after {
+  width: 100px;
+  height: 100px;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  transition: width 0.01s, height 0.01s, opacity 0.01s, transform 0.01s;
 }
