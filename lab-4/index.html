@@ -2,11 +2,52 @@
 <html lang="pl">
   <head>
     <meta charset="UTF-8" />
-    <title>Lab 4</title>
+    <title>Kanban</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <h1>Lab 4</h1>
-    <a href="..">Powrót</a>
+    <header>
+      <h1>Kanban</h1>
+    </header>
+
+    <main>
+      <div class="kanban-board">
+        <div class="column" id="todo">
+          <h2>Do zrobienia (<span class="count">0</span>)</h2>
+          <div class="cards"></div>
+          <div class="column-buttons">
+            <button class="add-card">Dodaj kartę</button>
+            <button class="color-column">Koloruj kolumnę</button>
+            <button class="sort-column">Sortuj A–Z</button>
+          </div>
+        </div>
+
+        <div class="column" id="doing">
+          <h2>W trakcie (<span class="count">0</span>)</h2>
+          <div class="cards"></div>
+          <div class="column-buttons">
+            <button class="add-card">Dodaj kartę</button>
+            <button class="color-column">Koloruj kolumnę</button>
+            <button class="sort-column">Sortuj A–Z</button>
+          </div>
+        </div>
+
+        <div class="column" id="done">
+          <h2>Zrobione (<span class="count">0</span>)</h2>
+          <div class="cards"></div>
+          <div class="column-buttons">
+            <button class="add-card">Dodaj kartę</button>
+            <button class="color-column">Koloruj kolumnę</button>
+            <button class="sort-column">Sortuj A–Z</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>Aleksandra Marasek</p>
+    </footer>
+
+    <script src="js/script.js"></script>
   </body>
 </html>
