@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Aplikacja - Kwadraty i Kółka</title>
+
+    <style>
+      :root {
+        --bg: #efe8e3;
+        --panel: #f6f0ed;
+        --muted: #6b5b57;
+        --accent: #e3cfc9;
+        --board-bg: #f3ebe8;
+        --stroke: #c9bfb9;
+        --shadow: 0 6px 18px rgba(25, 20, 20, 0.06);
+        --btn-text: #2b2624;
+        --radius: 14px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        background: linear-gradient(180deg, #f6f7f8 0%, #eef2f3 100%);
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 28px;
+      }
+
+      .wrap {
+        width: 920px;
+        max-width: 96vw;
+        background: var(--panel);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        padding: 34px 40px;
+        border: 1px solid rgba(0, 0, 0, 0.03);
+      }
+
+      .title {
+        text-align: center;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #332b29;
+        margin: 0 0 18px;
+        font-size: 20px;
+      }
+
+      .controls {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+      }
+
+      .left-controls {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        background: transparent;
+        border: none;
+        padding: 8px 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 0.8px;
+        cursor: pointer;
+        color: var(--btn-text);
+        border-radius: 8px;
+        transition: transform 0.12s, background 0.12s, box-shadow 0.12s;
+      }
+      .btn:hover {
+        transform: translateY(-3px);
+      }
+      .btn.primary {
+        background: transparent;
+        padding: 10px 14px;
+        border-radius: 12px;
+        box-shadow: 0 3px 0 rgba(0, 0, 0, 0.03) inset;
+      }
+
+      .board-wrap {
+        border: 1px solid var(--stroke);
+        border-radius: 6px;
+        padding: 18px;
+        background: var(--board-bg);
+        min-height: 200px;
+      }
+
+      #board {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        padding: 8px;
+      }
+
+      .shape {
+        width: 94px;
+        height: 94px;
+        border: 3px solid rgba(0, 0, 0, 0.25);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+        cursor: pointer;
+        transition: transform 0.18s, box-shadow 0.18s;
+        flex: 0 0 auto;
+        display: block;
+      }
+      .shape:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+      }
+      .square {
+        border-radius: 16px;
+      }
+      .circle {
+        border-radius: 50%;
+      }
+
+      .foot {
+        margin-top: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        color: #483b39;
+        font-weight: 600;
+      }
+
+      .counter {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 18px;
+      }
+      .icon {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        border: 2px solid #222;
+        border-radius: 50%;
+        transform: translateY(1px);
+      }
+      .icon.square {
+        border-radius: 4px;
+        width: 18px;
+        height: 14px;
+      }
+
+      @media (max-width: 600px) {
+        .shape {
+          width: 72px;
+          height: 72px;
+        }
+        .wrap {
+          padding: 20px;
+        }
+        .controls {
+          gap: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap" role="application" aria-label="Aplikacja kształty">
+      <h2 class="title">APLIKACJA - KWADRATY &amp; KÓŁKA</h2>
+
+      <div class="controls" aria-hidden="false">
+        <div class="left-controls">
+          <button id="addSquare" class="btn primary">Dodaj kwadraty</button>
+          <button id="addCircle" class="btn primary">Dodaj kółka</button>
+          <button id="recolorSquares" class="btn">Koloruj kwadraty</button>
+          <button id="recolorCircles" class="btn">Koloruj kółka</button>
+          <button id="return" class="btn">Powrót</button>
+        </div>
+      </div>
+
+      <div class="board-wrap" aria-label="pole z kształtami">
+        <div id="board"></div>
+      </div>
+
+      <div class="foot" aria-hidden="false">
+        <div class="counter">
+          <span class="icon circle" aria-hidden="true"></span>
+          <span id="cntCircles">0</span>
+        </div>
+        <div style="width: 8px"></div>
+        <div class="counter">
+          <span class="icon square" aria-hidden="true"></span>
+          <span id="cntSquares">0</span>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
