@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ajax Demo</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+      button {
+        margin-right: 10px;
+      }
+      #loader {
+        display: none;
+        color: blue;
+        font-weight: bold;
+      }
+      #error {
+        color: red;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Ajax Demo</h1>
+
+    <button id="btn-load">Pobierz dane</button>
+    <button id="btn-error">Wywołaj błąd</button>
+    <button id="btn-reset">Reset</button>
+
+    <p id="loader">Ładowanie...</p>
+    <p id="error"></p>
+
+    <ul id="list"></ul>
+
+    <script src="ajax.js"></script>
+    <script>
+      const api = new Ajax({
+        baseURL: 'https://jsonplaceholder.typicode.com',
+        timeout: 4000,
+      });
+
+      const btnLoad = document.getElementById('btn-load');
+      const btnError = document.getElementById('btn-error');
+      const btnReset = document.getElementById('btn-reset');
+      const list = document.getElementById('list');
+      const loader = document.getElementById('loader');
+      const errorBox = document.getElementById('error');
+
+      function showLoader() {
+        loader.style.display = 'block';
+      }
+      function hideLoader() {
+        loader.style.display = 'none';
+      }
+      function showError(msg) {
+        errorBox.textContent = msg;
+      }
+      function clearError() {
+        errorBox.textContent = '';
+      }
+      function clearList() {
+        list.innerHTML = '';
+      }
+
+      btnLoad.onclick = async () => {
+        clearError();
+        clearList();
+        showLoader();
+
+        try {
+          const posts = await api.get('/posts');
+          posts.slice(0, 10).forEach((p) => {
+            const li = document.createElement('li');
+            li.textContent = p.title;
+            list.appendChild(li);
+          });
+        } catch (err) {
+          showError(err.message);
+        }
+
+        hideLoader();
+      };
+
+      btnError.onclick = async () => {
+        clearError();
+        clearList();
+        showLoader();
+
+        try {
+          await api.get('/endpoint-nie-istnieje');
+        } catch (err) {
+          showError(err.message);
+        }
+
+        hideLoader();
+      };
+
+      btnReset.onclick = () => {
+        clearList();
+        clearError();
+        hideLoader();
+      };
+    </script>
+  </body>
+</html>
